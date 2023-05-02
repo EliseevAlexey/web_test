@@ -160,4 +160,4 @@ cython_debug/
 .idea/
 
 # Ignore personalized config files
-deploy/local/local.env
+deploy/local/local.config.sh

@@ -3,12 +3,8 @@ APP_NAME='docker'
 if ! command -v $APP_NAME &> /dev/null
 then
     echo "-- Installing '$APP_NAME'"
-    echo "Running: sudo apt-get update"
     sudo apt-get update
-    sudo apt-get install -y \
-        ca-certificates \
-        curl \
-        gnupg
+    sudo apt-get install -y ca-certificates curl gnupg
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -30,23 +26,14 @@ APP_NAME='microk8s'
 if ! command -v $APP_NAME &> /dev/null
 then
     echo "-- Installing '$APP_NAME'"
-    echo "Running: sudo apt-get update"
     sudo apt-get update
-    echo "Running: sudo snap install microk8s --classic --channel=1.27"
     sudo snap install microk8s --classic --channel=1.27
-    echo "Running: sudo usermod -a -G microk8s $USER" 
     sudo usermod -a -G microk8s $USER
-    echo "Running: sudo chown -f -R $USER ~/.kube"
     sudo chown -f -R $USER ~/.kube
-    echo "Running: sudo su - $USER"
     sudo su - $USER
-    echo "Running: microk8s status --wait-ready"
     microk8s status --wait-ready
-    echo "Running: microk8s start"
     microk8s start
-    echo "Running: microk8s enable registry"
     microk8s enable registry ingress
-    echo "Running: echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases"
     echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
     source ~/.bashrc
 else
