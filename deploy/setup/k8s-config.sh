@@ -11,8 +11,11 @@ microk8s status --wait-ready
 blue 'microk8s start'
 microk8s start
 
-blue 'microk8s enable registry ingress'
-microk8s enable registry ingress
+blue 'microk8s enable'
+microk8s enable registry
+
+blue 'microk8s ingress'
+microk8s enable ingress
 
 blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
 echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
