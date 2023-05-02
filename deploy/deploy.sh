@@ -1,7 +1,3 @@
-#!/bin/bash
-# Fail on any error
-set -e
-
 GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
 echo "Apply k8s updates"
 microk8s kubectl apply -f "$GIT_ROOT_DIR/deploy/k8s/"
