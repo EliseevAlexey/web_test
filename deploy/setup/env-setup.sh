@@ -57,24 +57,6 @@ then
 
     blue 'sudo chown -f -R $USER ~/.kube'
     sudo chown -f -R $USER ~/.kube
-
-    blue 'su - $USER'
-    su - $USER
-
-    blue 'microk8s status --wait-ready'
-    microk8s status --wait-ready
-
-    blue 'microk8s start'
-    microk8s start
-
-    blue 'microk8s enable registry ingress'
-    microk8s enable registry ingress
-
-    blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
-    echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
-
-    blue 'source ~/.bashrc'
-    source ~/.bashrc
 else
     echo "-- '$APP_NAME' already installed, skipping"
 fi
