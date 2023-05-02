@@ -1,3 +1,4 @@
-source ./deploy/local/local.env
+script_dir="$(dirname "$0")"
+source "$script_dir/local.env"
 git add . && git commit -m "$@" && git push
-ssh -t -oHostKeyAlgorithms=+ssh-dss root@$SERVER_IP 'cd web_test/deploy && git pull && ./deploy.sh'
+$SSH_COMMAND 'cd git/web_test/deploy && git pull && ./deploy.sh'
