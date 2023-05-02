@@ -58,8 +58,8 @@ then
     blue 'sudo chown -f -R $USER ~/.kube'
     sudo chown -f -R $USER ~/.kube
 
-    blue 'sudo su - $USER'
-    sudo su - $USER
+    blue 'su - $USER'
+    su - $USER
 
     blue 'microk8s status --wait-ready'
     microk8s status --wait-ready
