@@ -5,20 +5,28 @@ blue() {
   printf "${BLUE}$@${NC}\n"
 }
 
-blue 'microk8s status --wait-ready'
-microk8s status --wait-ready
+# blue 'microk8s status --wait-ready'
+# microk8s status --wait-ready
+#
+# blue 'microk8s start'
+# microk8s start
+#
+# blue 'microk8s enable registry'
+# microk8s enable registry
+#
+# blue 'microk8s ingress'
+# microk8s enable ingress
+#
+# blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
+# echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
+#
+# blue 'source ~/.bashrc'
+# source ~/.bashrc
 
-blue 'microk8s start'
-microk8s start
+GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
+INGRESS_HELM_PATH="$GIT_ROOT_DIR/deploy/helm/ingress"
+ENV="dev"
 
-blue 'microk8s enable registry'
-microk8s enable registry
-
-blue 'microk8s ingress'
-microk8s enable ingress
-
-blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
-echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
-
-blue 'source ~/.bashrc'
-source ~/.bashrc
+HELM_CMD=helm install ingress $INGRESS_HELM_PATH --values "$INGRESS_HELM_PATH/values/$ENV.yml"
+blue "$HELM_CMD"
+$HELM_CMD
