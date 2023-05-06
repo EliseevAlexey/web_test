@@ -7,5 +7,5 @@ SERVER_APP_PATH="/root/$APP_NAME"
 $SSH_COMMAND "cd $SERVER_APP_PATH && ./deploy/setup/k8s-config.sh"
 # $SSH_COMMAND "cd $SERVER_APP_PATH && ./deploy/deploy.sh"
 
-open "http://$SERVER_HOST"
-echo "Setup complete!"
+# open "http://$SERVER_HOST"
+# echo "Setup complete!"
