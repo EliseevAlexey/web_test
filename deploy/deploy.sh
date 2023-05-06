@@ -12,7 +12,7 @@ APP_NAME="backend"
 APP_TAG="latest"
 APP_DIR="$GIT_ROOT_DIR/$APP_NAME"
 HELM_CHARTS_PATH="$GIT_ROOT_DIR/deploy/helm/common/"
-APP_HELM_VALUES="${GIT_ROOT_DIR}/$APP_NAME/k8s/values/$ENV.yml"
+APP_HELM_VALUES="${GIT_ROOT_DIR}/$APP_NAME/k8s/values/$ENV.yaml"
 
 blue "docker build -q $APP_DIR -t $REPOSITORY_URL/$APP_NAME:$APP_TAG"
 docker build -q $APP_DIR -t $REPOSITORY_URL/$APP_NAME:$APP_TAG
