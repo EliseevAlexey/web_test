@@ -1,0 +1,25 @@
+{{ $name := .Values.name }}
+
+{{- $port := .Values.deployment.port | default 80 -}}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ $name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ $name }}
+spec:
+  {{ if .Values.service.nodePort }}
+  type: NodePort
+  {{ else -}}
+  type: ClusterIP
+  {{ end -}}
+  ports:
+    - port: {{ $port }}
+      name: app
+      targetPort: {{ $port -}}
+      {{ if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
+  selector:
+    app: {{ $name }}

@@ -1,0 +1,8 @@
+name: "backend"
+
+deployment:
+  repository: "http://localhost:32000/backend"
+
+resources:
+  limits:
+    memory: 768M

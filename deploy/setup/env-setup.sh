@@ -60,3 +60,31 @@ then
 else
     echo "-- '$APP_NAME' already installed, skipping"
 fi
+
+
+# Helm https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+APP_NAME='helm'
+if ! command -v $APP_NAME &> /dev/null
+then
+    echo "-- Installing '$APP_NAME'"
+
+    blue 'sudo apt-get update'
+    sudo apt-get update
+
+    blue 'curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null'
+    curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+
+    blue 'sudo apt-get install apt-transport-https --yes'
+    sudo apt-get install apt-transport-https --yes
+
+    blue 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list'
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+    blue 'sudo apt-get update'
+    sudo apt-get update
+
+    blue 'sudo apt-get install helm'
+    sudo apt-get install helm
+else
+    echo "-- '$APP_NAME' already installed, skipping"
+fi
