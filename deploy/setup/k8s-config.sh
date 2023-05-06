@@ -5,27 +5,40 @@ blue() {
   printf "${BLUE}$@${NC}\n"
 }
 
-# blue 'microk8s status --wait-ready'
-# microk8s status --wait-ready
-#
-# blue 'microk8s start'
-# microk8s start
-#
-# blue 'microk8s enable registry'
-# microk8s enable registry
-#
-# blue 'microk8s ingress'
-# microk8s enable ingress
-#
-# blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
-# echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
-#
-# blue 'source ~/.bashrc'
-# source ~/.bashrc
+blue 'microk8s status --wait-ready'
+microk8s status --wait-ready
 
+blue 'microk8s start'
+microk8s start
+
+blue 'microk8s enable helm'
+microk8s enable helm
+
+blue 'microk8s enable storage'
+microk8s enable storage
+
+blue 'microk8s enable dns'
+microk8s enable dns
+
+blue 'microk8s ingress'
+microk8s enable ingress
+
+blue 'microk8s enable registry'
+microk8s enable registry
+
+blue 'microk8s.kubectl config view > $HOME/.kube/config'
+microk8s.kubectl config view > $HOME/.kube/config
+
+blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
+echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
+
+blue 'source ~/.bashrc'
+source ~/.bashrc
+
+
+ENV="dev"
 GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
 INGRESS_HELM_PATH="$GIT_ROOT_DIR/deploy/helm/ingress"
-ENV="dev"
 echo "$INGRESS_HELM_PATH"
 
 HELM_CMD="helm install ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/values/$ENV.yaml"

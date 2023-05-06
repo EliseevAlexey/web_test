@@ -2,4 +2,4 @@ ingress:
   hosts:
     - paths:
         - from: "/"
-          to: "app"
+          to: "backend"
