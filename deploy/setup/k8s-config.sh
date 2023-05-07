@@ -43,6 +43,6 @@ GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
 INGRESS_HELM_PATH="$GIT_ROOT_DIR/deploy/helm/ingress"
 echo "$INGRESS_HELM_PATH"
 
-HELM_CMD="helm install ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/values/$ENV.yaml"
+HELM_CMD="helm upgrade ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/values/$ENV.yaml --install"
 blue "$HELM_CMD"
 $HELM_CMD
