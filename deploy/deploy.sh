@@ -24,5 +24,5 @@ blue "microk8s ctr image pull $REPOSITORY_URL/$APP_NAME:$APP_TAG"
 microk8s ctr image pull $REPOSITORY_URL/$APP_NAME:$APP_TAG
 
 HELM_CMD="helm install $APP_NAME $HELM_CHARTS_PATH --values $APP_HELM_VALUES"
-blue $HELM_CMD
+echo $HELM_CMD
 $HELM_CMD
