@@ -49,3 +49,8 @@ INGRESS_HELM_PATH="$GIT_ROOT_DIR/deploy/helm/ingress"
 HELM_CMD="helm upgrade ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/values/$ENV.yaml --install"
 color "$HELM_CMD"
 $HELM_CMD
+
+SLEEP_SECONDS = 15
+color "Sleeping for $SLEEP_SECONDS. Waiting for k8s Registry been ready"
+color "sleep $SLEEP_SECONDS"
+sleep $SLEEP_SECONDS
