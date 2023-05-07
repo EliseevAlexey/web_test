@@ -16,20 +16,14 @@ microk8s status --wait-ready
 color 'microk8s start'
 microk8s start
 
-color 'microk8s enable helm'
-microk8s enable helm
+color 'microk8s enable registry'
+microk8s enable registry
 
 color 'microk8s enable hostpath-storage'
 microk8s enable hostpath-storage
 
-color 'microk8s enable dns'
-microk8s enable dns
-
 color 'microk8s ingress'
 microk8s enable ingress
-
-color 'microk8s enable registry'
-microk8s enable registry
 
 color "echo alias kubectl=microk8s kubectl' >> ~/.bash_aliases"
 echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
@@ -50,8 +44,8 @@ HELM_CMD="helm upgrade ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/v
 color $HELM_CMD
 $HELM_CMD
 
-REGISTRY_CREATION_TIMEOUT_SECONDS = 30
-color "sleep $REGISTRY_CREATION_TIMEOUT_SECONDS. Waiting for k8s Registry been ready"
+REGISTRY_CREATION_TIMEOUT_SECONDS=30
+color "sleep $REGISTRY_CREATION_TIMEOUT_SECONDS;echo Waiting for k8s Registry been ready"
 sleep $REGISTRY_CREATION_TIMEOUT_SECONDS
 
 REPOSITORY_URL="localhost:32000"  # This is trusted storage prefix to support local repository in microk8s
