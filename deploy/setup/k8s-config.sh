@@ -33,8 +33,8 @@ blue 'source ~/.bashrc'
 source ~/.bashrc
 
 
-blue 'kubectl config view --raw > ~/.kube/config'
-kubectl config view --raw > ~/.kube/config
+blue 'microk8s.kubectl config view --raw > ~/.kube/config'
+microk8s.kubectl config view --raw > ~/.kube/config
 
 
 ENV="dev"
