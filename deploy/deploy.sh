@@ -23,6 +23,6 @@ docker push -q $REPOSITORY_URL/$APP_NAME:$APP_TAG
 blue "microk8s ctr image pull $REPOSITORY_URL/$APP_NAME:$APP_TAG"
 microk8s ctr image pull $REPOSITORY_URL/$APP_NAME:$APP_TAG
 
-HELM_CMD="helm install $APP_NAME $HELM_CHARTS_PATH --values $APP_HELM_VALUES"
+HELM_CMD="helm upgrade $APP_NAME $HELM_CHARTS_PATH --values $APP_HELM_VALUES --install"
 echo $HELM_CMD
 $HELM_CMD
