@@ -13,6 +13,6 @@ spec:
   ports:
     - port: {{ $port }}
       name: app
-      targetPort: {{ $port -}}
+      targetPort: {{ $port }}
   selector:
     app: {{ $name }}
