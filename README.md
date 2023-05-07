@@ -31,3 +31,6 @@ Example:
 
 # CI/CD
 - To commit code and deploy run `./deploy/local/push.sh`
+
+# k8s commands
+

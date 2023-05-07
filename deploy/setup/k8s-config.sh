@@ -19,8 +19,8 @@ microk8s start
 color 'microk8s enable helm'
 microk8s enable helm
 
-# color 'microk8s enable hostpath-storage'
-# microk8s enable hostpath-storage
+color 'microk8s enable hostpath-storage'
+microk8s enable hostpath-storage
 
 color 'microk8s enable dns'
 microk8s enable dns
@@ -43,14 +43,17 @@ microk8s.kubectl config view --raw > ~/.kube/config
 
 
 ENV="dev"
-GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
-INGRESS_HELM_PATH="$GIT_ROOT_DIR/deploy/helm/ingress"
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+INGRESS_HELM_PATH="$ROOT_DIR/deploy/helm/ingress"
 
 HELM_CMD="helm upgrade ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/values/$ENV.yaml --install"
-color "$HELM_CMD"
+color $HELM_CMD
 $HELM_CMD
 
-REGISTRY_CREATION_TIMEOUT_SECONDS = 15
-color "Sleeping for $REGISTRY_CREATION_TIMEOUT_SECONDS. Waiting for k8s Registry been ready"
-color "sleep $REGISTRY_CREATION_TIMEOUT_SECONDS"
+REGISTRY_CREATION_TIMEOUT_SECONDS = 30
+color "sleep $REGISTRY_CREATION_TIMEOUT_SECONDS. Waiting for k8s Registry been ready"
 sleep $REGISTRY_CREATION_TIMEOUT_SECONDS
+
+REPOSITORY_URL="localhost:32000"  # This is trusted storage prefix to support local repository in microk8s
+color "wget $REPOSITORY_URL"
+wget $REPOSITORY_URL
