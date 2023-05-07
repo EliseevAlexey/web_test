@@ -84,7 +84,7 @@ if __name__ == '__main__':
     print(f"Droplet IP: {droplet_ip}")
     _replace_env_ip(new_ip=droplet_ip)
 
-    sleep_timout = 30
-    print(f"Sleeping for {sleep_timout} seconds before console will be ready...")
+    sleep_timout = 45
+    print(f"Sleeping for {sleep_timout} seconds before Ubuntu finally will be ready...")
     time.sleep(sleep_timout)
     print("Should be ready!")
