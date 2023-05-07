@@ -33,6 +33,7 @@ blue 'source ~/.bashrc'
 source ~/.bashrc
 
 
+# HELM
 blue 'microk8s.kubectl config view --raw > ~/.kube/config'
 microk8s.kubectl config view --raw > ~/.kube/config
 
