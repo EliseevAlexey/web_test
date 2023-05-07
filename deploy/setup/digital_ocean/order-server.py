@@ -3,12 +3,12 @@ import os
 import sys
 import time
 
-from deploy.setup.digital_ocean.do_common import get_droplet, create_droplet
+from deploy.setup.digital_ocean.do_common import create_droplet, get_droplet
 
 
 def _replace_env_ip(new_ip: str):
     my_path = os.path.abspath(os.path.dirname(__file__))
-    local_env_config_file_path = os.path.join(my_path, "../local/local.env")
+    local_env_config_file_path = os.path.join(my_path, "../../local/local.env")
     for line in fileinput.input(local_env_config_file_path, inplace=True):
         if line.startswith("SERVER_HOST"):
             line = f'SERVER_HOST="{new_ip}"\n'
