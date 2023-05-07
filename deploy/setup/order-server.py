@@ -55,13 +55,27 @@ def get_droplet(droplet_id: int) -> dict:
     return requests.get(url=f"{DROPLETS_API_URL}/{droplet_id}", headers=HEADERS).json()
 
 
-def _replace_env_ip(new_ip: str):
-    my_path = os.path.abspath(os.path.dirname(__file__))
-    local_env_config_file_path = os.path.join(my_path, "../local/local.env")
+def _replace_in_local_env(line_prefix: str, new_line: str) -> None:
+    cur_path = os.path.abspath(os.path.dirname(__file__))
+    local_env_config_file_path = os.path.join(cur_path, "../local/local.env")
     for line in fileinput.input(local_env_config_file_path, inplace=True):
-        if line.startswith("SERVER_HOST"):
-            line = f'SERVER_HOST="{new_ip}"\n'
+        if line.startswith(line_prefix):
+            line = new_line,
         sys.stdout.write(line)
+
+
+def _replace_env_ip(new_ip: str) -> None:
+    _replace_in_local_env(
+        line_prefix="SERVER_HOST",
+        new_line=f'SERVER_HOST="{new_ip}"\n',
+    )
+
+
+def _replace_droplet_id(new_droplet_id: int) -> None:
+    _replace_in_local_env(
+        line_prefix="DROPLET_ID",
+        new_line=f'DROPLET_ID="{new_droplet_id}"\n',
+    )
 
 
 if __name__ == '__main__':
