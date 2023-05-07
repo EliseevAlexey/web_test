@@ -26,10 +26,10 @@ microk8s enable ingress
 blue 'microk8s enable registry'
 microk8s enable registry
 
-blue 'microk8s.kubectl config view > $HOME/.kube/config'
-microk8s.kubectl config view > $HOME/.kube/config
+blue 'kubectl config view --raw > ~/.kube/config'
+kubectl config view --raw > ~/.kube/config
 
-blue 'echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases'
+blue 'echo "alias kubectl=microk8s kubectl'" >> ~/.bash_aliases'
 echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
 
 blue 'source ~/.bashrc'
