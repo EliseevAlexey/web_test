@@ -4,7 +4,6 @@ metadata:
   name: ingress
 spec:
   rules:
-    {{- range .Values.ingress.hosts }}
     - http:
         paths:
           {{- range $from, $to := .paths }}
@@ -16,4 +15,3 @@ spec:
                 port:
                   number: 80
           {{- end }}
-    {{- end }}
