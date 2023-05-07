@@ -60,21 +60,21 @@ def _replace_in_local_env(line_prefix: str, new_line: str) -> None:
     local_env_config_file_path = os.path.join(cur_path, "../local/local.env")
     for line in fileinput.input(local_env_config_file_path, inplace=True):
         if line.startswith(line_prefix):
-            line = new_line,
+            line = new_line
         sys.stdout.write(line)
 
 
 def _replace_env_ip(new_ip: str) -> None:
     _replace_in_local_env(
-        line_prefix="SERVER_HOST",
+        line_prefix="SERVER_HOST=",
         new_line=f'SERVER_HOST="{new_ip}"\n',
     )
 
 
 def _replace_droplet_id(new_droplet_id: int) -> None:
     _replace_in_local_env(
-        line_prefix="DROPLET_ID",
-        new_line=f'DROPLET_ID="{new_droplet_id}"\n',
+        line_prefix="DROPLET_ID=",
+        new_line=f'DROPLET_ID={new_droplet_id}\n',
     )
 
 
@@ -82,6 +82,7 @@ if __name__ == '__main__':
     droplet = create_droplet()
     droplet_id = int(droplet['droplet']['id'])
     print(f"Created droplet #{droplet_id}")
+    _replace_droplet_id(new_droplet_id=droplet_id)
 
     is_not_available = True
     while is_not_available:
