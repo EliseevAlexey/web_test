@@ -9,7 +9,6 @@ import requests
 UBUNTU_IMAGE = "ubuntu-22-10-x64"
 _2GB_1CPU_SIZE = "s-1vcpu-2gb"
 REGION = "nyc1"
-VPC_UUID = "b7bce3c3-dc84-11e8-8650-3cfdfea9f8c8"
 
 DIGITAL_OCEAN_TOKEN = os.environ['DIGITAL_OCEAN_TOKEN']  # https://cloud.digitalocean.com/account/api/tokens?i=8f0315
 DROPLETS_API_URL = "https://api.digitalocean.com/v2/droplets"
