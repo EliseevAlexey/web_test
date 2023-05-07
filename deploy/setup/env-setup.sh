@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 color() {
     APP=$1
     CMD=$2
-    printf "${CYAN}$APP${NC}: ${BLUE}$@${NC}\n"
+    printf "${CYAN}$APP${NC}: ${BLUE}$CMD${NC}\n"
 }
 
 green() {

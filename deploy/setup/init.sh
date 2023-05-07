@@ -1,7 +1,7 @@
 # Load env variables
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 source "$ROOT_DIR/deploy/local/local.env"
-SERVER_APP_PATH="/root/$APP_NAME"
+SERVER_APP_PATH="/root/$PROJECT_NAME"
 
 $SSH_COMMAND "git clone $REPO_PATH && cd $SERVER_APP_PATH && ./deploy/setup/env-setup.sh"
 $SSH_COMMAND "cd $SERVER_APP_PATH && ./deploy/setup/k8s-config.sh"
