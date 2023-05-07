@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.name }}
-          image: {{ .Values.deployment.repository }}:{{ .Values.deployment.tag }}
+          image: {{ .Values.deployment.repository }}:{{ .Values.name }}
           imagePullPolicy: {{ .Values.deployment.imagePullPolicy | default "Never" }}
           ports:
             - containerPort: {{ .Values.deployment.port | default 80 }}
