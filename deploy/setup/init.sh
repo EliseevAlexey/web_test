@@ -10,5 +10,6 @@ $SSH_COMMAND "git clone $REPO_PATH && cd $SERVER_APP_PATH && ./deploy/setup/env-
 $SSH_COMMAND "cd $SERVER_APP_PATH && ./deploy/setup/k8s-config.sh"
 $SSH_COMMAND "cd $SERVER_APP_PATH && ./deploy/deploy.sh"
 
+sleep 3
 open "http://$SERVER_HOST"
 echo "Setup complete!"
