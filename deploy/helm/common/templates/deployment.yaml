@@ -13,9 +13,9 @@ spec:
     matchLabels:
       app: {{ $name }}
   template:
-    metadata:
-      labels:
-        app: {{ $name }}
+#    metadata:
+#      labels:
+#        app: {{ $name }}
     spec:
       containers:
         - name: {{ $name }}
