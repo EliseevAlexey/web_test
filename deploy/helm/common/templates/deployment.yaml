@@ -1,17 +1,23 @@
+{{ $name := .Values.name }}
+
+
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: {{ .Values.name }}
+  name: {{ $name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.deployment.replicas | default 1 }}
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ $name }}
   template:
+    metadata:
+      labels:
+        app: {{ $name }}
     spec:
       containers:
-        - name: {{ .Values.name }}
+        - name: {{ $name }}
           image: {{ .Values.deployment.repository }}:{{ .Values.name }}
           imagePullPolicy: {{ .Values.deployment.imagePullPolicy | default "Never" }}
           ports:

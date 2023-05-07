@@ -1,6 +1,6 @@
 {{ $name := .Values.name }}
-
 {{- $port := .Values.deployment.port | default 80 -}}
+
 kind: Service
 apiVersion: v1
 metadata:
