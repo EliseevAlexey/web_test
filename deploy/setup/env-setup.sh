@@ -83,6 +83,9 @@ then
     blue 'sudo apt-get update'
     sudo apt-get update
 
+    sleep 2
+    # E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 7867 (apt-get)
+    #  E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
     blue 'sudo apt-get install helm'
     sudo apt-get install helm
 else
