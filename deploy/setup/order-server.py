@@ -91,6 +91,6 @@ if __name__ == '__main__':
     _replace_env_ip(new_ip=droplet_ip)
 
     sleep_timout = 30
-    print(f"Sleeping {sleep_timout} seconds before console will be ready...")
+    print(f"Sleeping for {sleep_timout} seconds before console will be ready...")
     time.sleep(sleep_timout)
     print("Should be ready!")

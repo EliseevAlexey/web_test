@@ -1,9 +1,10 @@
 kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: ingress
+  name: {{ .Release.Name }}-ingress
 spec:
   rules:
+    {{- range .Values.ingress.hosts }}
     - http:
         paths:
           {{- range $from, $to := .paths }}
@@ -15,3 +16,4 @@ spec:
                 port:
                   number: 80
           {{- end }}
+    {{- end }}
