@@ -14,8 +14,8 @@ microk8s start
 blue 'microk8s enable helm'
 microk8s enable helm
 
-blue 'microk8s enable storage'
-microk8s enable storage
+blue 'microk8s enable hostpath-storage'
+microk8s enable hostpath-storage
 
 blue 'microk8s enable dns'
 microk8s enable dns
@@ -26,14 +26,15 @@ microk8s enable ingress
 blue 'microk8s enable registry'
 microk8s enable registry
 
-blue 'kubectl config view --raw > ~/.kube/config'
-kubectl config view --raw > ~/.kube/config
-
-blue 'echo "alias kubectl=microk8s kubectl'" >> ~/.bash_aliases'
+blue "echo alias kubectl=microk8s kubectl' >> ~/.bash_aliases"
 echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
 
 blue 'source ~/.bashrc'
 source ~/.bashrc
+
+
+blue 'kubectl config view --raw > ~/.kube/config'
+kubectl config view --raw > ~/.kube/config
 
 
 ENV="dev"
