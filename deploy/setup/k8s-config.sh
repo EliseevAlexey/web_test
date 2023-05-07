@@ -50,7 +50,7 @@ HELM_CMD="helm upgrade ingress $INGRESS_HELM_PATH/ --values $INGRESS_HELM_PATH/v
 color "$HELM_CMD"
 $HELM_CMD
 
-SLEEP_SECONDS = 15
-color "Sleeping for $SLEEP_SECONDS. Waiting for k8s Registry been ready"
-color "sleep $SLEEP_SECONDS"
-sleep $SLEEP_SECONDS
+REGISTRY_CREATION_TIMEOUT_SECONDS = 15
+color "Sleeping for $REGISTRY_CREATION_TIMEOUT_SECONDS. Waiting for k8s Registry been ready"
+color "sleep $REGISTRY_CREATION_TIMEOUT_SECONDS"
+sleep $REGISTRY_CREATION_TIMEOUT_SECONDS
